@@ -77,7 +77,6 @@ class BaseStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: (radius * 2) + (padding ?? 0),
       height: showTitle ? radius * 3.5 : radius * 2,
       child: Column(
         children: [
@@ -93,8 +92,6 @@ class BaseStep extends StatelessWidget {
               canRequestFocus: false,
               radius: radius,
               child: Container(
-                width: radius * 2,
-                height: radius * 2,
                 decoration: BoxDecoration(
                   shape: stepShape == StepShape.circle
                       ? BoxShape.circle
@@ -163,24 +160,20 @@ class BaseStep extends StatelessWidget {
     );
   }
 
-  SizedBox _buildIcon(BuildContext context) {
-    return SizedBox(
-      width: radius * 2,
-      height: radius * 2,
-      child: Center(
-        child: Icon(
-          isActive && step.activeIcon != null
-              ? step.activeIcon!.icon
-              : isFinished && step.finishIcon != null
-                  ? step.finishIcon!.icon
-                  : step.icon.icon,
-          size: iconSize ??  radius,
-          color: isFinished
-              ? finishedIconColor ?? Colors.white
-              : isActive
-                  ? activeIconColor ?? Theme.of(context).colorScheme.primary
-                  : unreachedIconColor ?? Colors.grey.shade400,
-        ),
+  Widget _buildIcon(BuildContext context) {
+    return Center(
+      child: Icon(
+        isActive && step.activeIcon != null
+            ? step.activeIcon!.icon
+            : isFinished && step.finishIcon != null
+                ? step.finishIcon!.icon
+                : step.icon.icon,
+        size: iconSize ??  radius,
+        color: isFinished
+            ? finishedIconColor ?? Colors.white
+            : isActive
+                ? activeIconColor ?? Theme.of(context).colorScheme.primary
+                : unreachedIconColor ?? Colors.grey.shade400,
       ),
     );
   }

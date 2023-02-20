@@ -125,6 +125,12 @@ class EasyStepper extends StatefulWidget {
   /// The Pattern of the border dashes when BorderType set to [BorderType.dotted].
   final List<double> dashPattern;
 
+  ///Size of the icon. If no size is specified, stepRadius value will be used
+  final double? iconSize;
+
+  ///Size of the title. If no size is specified, (0.45 * stepRadius) value will be used
+  final double? titleSize;
+
   /// Show or Hide step border.
   final bool showStepBorder;
 
@@ -164,6 +170,7 @@ class EasyStepper extends StatefulWidget {
     this.lineLength = 40,
     this.lineDotRadius = 1,
     this.lineSpace = 5,
+    this.titleSize,
     this.padding = 8,
     @Deprecated("use 'stepAnimationCurve' instead, This feature was deprecated after v0.1.4+1")
         this.stepReachedAnimationEffect = Curves.linear,
@@ -181,7 +188,7 @@ class EasyStepper extends StatefulWidget {
     this.finishedStepBorderType,
     this.dashPattern = const [3, 1],
     this.showStepBorder = true,
-    this.showLoadingAnimation = true,
+    this.showLoadingAnimation = true, this.iconSize,
   }) : super(key: key);
 
   @override
@@ -311,6 +318,8 @@ class _EasyStepperState extends State<EasyStepper> {
       lottieAnimation: widget.loadingAnimation,
       padding: widget.padding,
       stepShape: widget.stepShape,
+      iconSize: widget.iconSize,
+      titleSize: widget.titleSize,
       stepRadius: widget.stepBorderRadius,
       borderType: _handleBorderType(index),
       dashPattern: widget.dashPattern,

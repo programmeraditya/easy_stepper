@@ -40,6 +40,8 @@ class BaseStep extends StatelessWidget {
     required this.dashPattern,
     required this.showStepBorder,
     required this.showLoadingAnimation,
+    required this.iconSize,
+    required this.titleSize
   }) : super(key: key);
   final EasyStep step;
   final bool isActive;
@@ -65,6 +67,8 @@ class BaseStep extends StatelessWidget {
   final double? padding;
   final StepShape stepShape;
   final double? stepRadius;
+  final double? iconSize;
+  final double? titleSize;
   final BorderType borderType;
   final List<double> dashPattern;
   final bool showStepBorder;
@@ -172,7 +176,7 @@ class BaseStep extends StatelessWidget {
               : isFinished && step.finishIcon != null
                   ? step.finishIcon!.icon
                   : step.icon.icon,
-          size: radius * 0.9,
+          size: iconSize ??  radius * 0.9,
           color: isFinished
               ? finishedIconColor ?? Colors.white
               : isActive

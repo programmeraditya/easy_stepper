@@ -138,15 +138,13 @@ class BaseStep extends StatelessWidget {
               ),
             ),
           ),
-          if (showTitle) const SizedBox(height: 10),
+          if (showTitle) const SizedBox(height: 4),
           if (showTitle)
-            SizedBox(
-              width: (radius * 2) + (padding ?? 0),
+            Flexible(
               child: Text(
                 step.title ?? '',
-                maxLines: 2,
+                overflow: TextOverflow.visible,
                 textAlign: TextAlign.center,
-                softWrap: true,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: isActive
                           ? activeTextColor ??
@@ -156,7 +154,7 @@ class BaseStep extends StatelessWidget {
                                   Theme.of(context).colorScheme.primary
                               : unreachedTextColor ?? Colors.grey.shade400,
                       height: 1,
-                      fontSize: radius * 0.45,
+                      fontSize: titleSize ?? radius * 0.45,
                     ),
               ),
             ),
@@ -176,7 +174,7 @@ class BaseStep extends StatelessWidget {
               : isFinished && step.finishIcon != null
                   ? step.finishIcon!.icon
                   : step.icon.icon,
-          size: iconSize ??  radius * 0.9,
+          size: iconSize ??  radius,
           color: isFinished
               ? finishedIconColor ?? Colors.white
               : isActive

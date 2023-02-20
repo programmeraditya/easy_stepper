@@ -85,6 +85,9 @@ class _MyAppState extends State<MyApp> {
                   lineType: LineType.normal,
                   lineColor: Colors.purple.shade300,
                   borderThickness: 10,
+                  stepRadius: 14,
+                  iconSize: 14,
+                  titleSize: 11,
                   padding: 15,
                   loadingAnimation: 'assets/loading_circle.json',
                   steps: const [
